@@ -25,14 +25,13 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final textNumber1Controller = TextEditingController();
   final textNumber2Controller = TextEditingController();
-  late int result;
+  late num result;
 
   @override
   void initState() {
     super.initState();
     result = 0;
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Column(
                 children: [
                   Expanded(
-                    flex : 1,
+                    flex: 1,
                     child: Container(
                         margin: EdgeInsets.only(top: 10),
                         child: Text("MÁY TÍNH BỎ TÚI",
@@ -57,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 fontWeight: FontWeight.bold))),
                   ),
                   Expanded(
-                    flex : 1,
+                    flex: 1,
                     child: Container(
                       margin: EdgeInsets.symmetric(horizontal: 10),
                       child: TextField(
@@ -75,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                   Expanded(
-                    flex : 1,
+                    flex: 1,
                     child: Container(
                       margin: EdgeInsets.only(left: 10, right: 10),
                       child: TextField(
@@ -93,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                   Expanded(
-                    flex : 3,
+                    flex: 3,
                     child: Container(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -101,30 +100,62 @@ class _MyHomePageState extends State<MyHomePage> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              ElevatedButton(onPressed: () {
-                                setState(() {
-                                  result = int.parse(textNumber1Controller.text) + int.parse(textNumber2Controller.text);
-                                });
-
-                              }, child: Text("+", style: TextStyle(fontSize: 20))),
-                              ElevatedButton(onPressed: () {}, child: Text("-", style: TextStyle(fontSize: 20))),
+                              ElevatedButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      result = int.parse(
+                                              textNumber1Controller.text) +
+                                          int.parse(textNumber2Controller.text);
+                                    });
+                                  },
+                                  child: Text("+",
+                                      style: TextStyle(fontSize: 20))),
+                              ElevatedButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      result = int.parse(
+                                          textNumber1Controller.text) -
+                                          int.parse(textNumber2Controller.text);
+                                    });
+                                  },
+                                  child: Text("-",
+                                      style: TextStyle(fontSize: 20))),
                             ],
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              ElevatedButton(onPressed: () {}, child: Text("*" , style: TextStyle(fontSize: 20))),
-                              ElevatedButton(onPressed: () {}, child: Text("/", style: TextStyle(fontSize: 20))),
+                              ElevatedButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      result = int.parse(
+                                          textNumber1Controller.text) *
+                                          int.parse(textNumber2Controller.text);
+                                    });
+                                  },
+                                  child: Text("*",
+                                      style: TextStyle(fontSize: 20))),
+                              ElevatedButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      result = double.parse(
+                                          textNumber1Controller.text) /
+                                          double.parse(textNumber2Controller.text);
+                                    });
+                                  },
+                                  child: Text("/",
+                                      style: TextStyle(fontSize: 20))),
                             ],
                           )
                         ],
                       ),
                     ),
-                  ), 
+                  ),
                   Expanded(
-                    flex : 3,
+                    flex: 3,
                     child: Container(
-                      child: Text("Kết quả = $result" , style: TextStyle(color : Colors.red , fontSize: 35)),
+                      child: Text("Kết quả = ${result.toStringAsFixed(0)}",
+                          style: TextStyle(color: Colors.red, fontSize: 35)),
                     ),
                   )
                 ],
