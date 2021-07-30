@@ -35,51 +35,80 @@ class _MyHomePageState extends State<MyHomePage> {
             child: SafeArea(
               child: Column(
                 children: [
-                  Container(
-                      margin: EdgeInsets.only(top: 10),
-                      child: Text("MÁY TÍNH BỎ TÚI",
-                          style: TextStyle(
-                              fontSize: 25,
-                              color: Colors.red,
-                              fontWeight: FontWeight.bold))),
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 10 , vertical: 15),
-                    child: TextField(
-                      onChanged: (text){
-
-                      },
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        labelText: "Number 1",
-                        hintText: "Example : 123" ,
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.black,
-                            width: 1
-                          ),
-                          borderRadius: BorderRadius.all(Radius.circular(5))
-                        )
+                  Expanded(
+                    flex : 1,
+                    child: Container(
+                        margin: EdgeInsets.only(top: 10),
+                        child: Text("MÁY TÍNH BỎ TÚI",
+                            style: TextStyle(
+                                fontSize: 25,
+                                color: Colors.red,
+                                fontWeight: FontWeight.bold))),
+                  ),
+                  Expanded(
+                    flex : 1,
+                    child: Container(
+                      margin: EdgeInsets.symmetric(horizontal: 10),
+                      child: TextField(
+                        onChanged: (text) {},
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                            labelText: "Number 1",
+                            hintText: "Example : 123",
+                            border: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.black, width: 1),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(5)))),
                       ),
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.only(left: 10 , right:  10 , bottom: 10),
-                    child: TextField(
-                      onChanged: (text){
-
-                      },
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                          labelText: "Number 1",
-                          hintText: "Example : 123" ,
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Colors.black,
-                                  width: 1
-                              ),
-                              borderRadius: BorderRadius.all(Radius.circular(5))
-                          )
+                  Expanded(
+                    flex : 1,
+                    child: Container(
+                      margin: EdgeInsets.only(left: 10, right: 10),
+                      child: TextField(
+                        onChanged: (text) {},
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                            labelText: "Number 2",
+                            hintText: "Example : 123",
+                            border: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.black, width: 1),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(5)))),
                       ),
+                    ),
+                  ),
+                  Expanded(
+                    flex : 3,
+                    child: Container(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              ElevatedButton(onPressed: () {}, child: Text("+", style: TextStyle(fontSize: 20))),
+                              ElevatedButton(onPressed: () {}, child: Text("-", style: TextStyle(fontSize: 20))),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              ElevatedButton(onPressed: () {}, child: Text("*" , style: TextStyle(fontSize: 20))),
+                              ElevatedButton(onPressed: () {}, child: Text("/", style: TextStyle(fontSize: 20))),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  ), 
+                  Expanded(
+                    flex : 3,
+                    child: Container(
+                      child: Text("Kết quả = 5" , style: TextStyle(color : Colors.red , fontSize: 35)),
                     ),
                   )
                 ],
