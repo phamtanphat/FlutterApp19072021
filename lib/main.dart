@@ -23,6 +23,17 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final textNumber1Controller = TextEditingController();
+  final textNumber2Controller = TextEditingController();
+  late int result;
+
+  @override
+  void initState() {
+    super.initState();
+    result = 0;
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Container(
                       margin: EdgeInsets.symmetric(horizontal: 10),
                       child: TextField(
-                        onChanged: (text) {},
+                        controller: textNumber1Controller,
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                             labelText: "Number 1",
@@ -68,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Container(
                       margin: EdgeInsets.only(left: 10, right: 10),
                       child: TextField(
-                        onChanged: (text) {},
+                        controller: textNumber2Controller,
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                             labelText: "Number 2",
@@ -90,7 +101,12 @@ class _MyHomePageState extends State<MyHomePage> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              ElevatedButton(onPressed: () {}, child: Text("+", style: TextStyle(fontSize: 20))),
+                              ElevatedButton(onPressed: () {
+                                setState(() {
+                                  result = int.parse(textNumber1Controller.text) + int.parse(textNumber2Controller.text);
+                                });
+
+                              }, child: Text("+", style: TextStyle(fontSize: 20))),
                               ElevatedButton(onPressed: () {}, child: Text("-", style: TextStyle(fontSize: 20))),
                             ],
                           ),
@@ -108,7 +124,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Expanded(
                     flex : 3,
                     child: Container(
-                      child: Text("Kết quả = 5" , style: TextStyle(color : Colors.red , fontSize: 35)),
+                      child: Text("Kết quả = $result" , style: TextStyle(color : Colors.red , fontSize: 35)),
                     ),
                   )
                 ],
